@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const WHATSAPP_NUMBER = "918919852330";
 
 function App() {
+
+  // 🔥 Animation (NO CSS FILE NEEDED)
+  useEffect(() => {
+    const elements = document.querySelectorAll(".fadeUp");
+
+    elements.forEach((el, i) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(40px)";
+      el.style.transition = "all 0.8s ease";
+
+      setTimeout(() => {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      }, i * 150);
+    });
+  }, []);
+
   return (
     <div style={{ background: "#000", color: "#fff", fontFamily: "sans-serif" }}>
 
@@ -15,22 +32,9 @@ function App() {
           <a href="#contact" style={link}>Contact</a>
         </div>
       </nav>
-useEffect(() => {
-  const elements = document.querySelectorAll(".fadeUp");
 
-  elements.forEach((el, i) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(40px)";
-    el.style.transition = "all 0.8s ease";
-
-    setTimeout(() => {
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }, i * 150);
-  });
-}, []);
       {/* HERO */}
-      <section style={hero}>
+      <section style={hero} className="fadeUp">
         <div style={overlay}></div>
 
         <div style={heroContent}>
@@ -50,110 +54,111 @@ useEffect(() => {
       </section>
 
       {/* SERVICES */}
-      <section id="services" style={section}>
+      <section id="services" style={section} className="fadeUp">
         <h2 style={title}>Our Services</h2>
 
         <div style={grid}>
           {["Wedding", "Pre-Wedding", "Events", "Maternity"].map((item, i) => (
-            <div key={i} style={card} className="card">
+            <div key={i} style={card} className="card fadeUp">
               {item}
             </div>
           ))}
         </div>
       </section>
 
-{/* --- LATEST STORIES --- */}
-<section style={{ padding: "80px 20px", background: "#000" }}>
+      {/* --- LATEST STORIES --- */}
+      <section style={{ padding: "80px 20px", background: "#000" }}>
 
-  <h2 style={{
-    fontSize: "28px",
-    letterSpacing: "2px",
-    marginBottom: "30px"
-  }}>
-    LATEST <span style={{ color: "#D4AF37", fontStyle: "italic" }}>STORIES</span>
-  </h2>
+        <h2 style={{
+          fontSize: "28px",
+          letterSpacing: "2px",
+          marginBottom: "30px"
+        }} className="fadeUp">
+          LATEST <span style={{ color: "#D4AF37", fontStyle: "italic" }}>STORIES</span>
+        </h2>
 
-  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
 
-    {[
-      {
-        title: "Pre-Wedding Story",
-        url: "https://www.instagram.com/reel/DVOZ3HNk7WU/",
-        img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622"
-      },
-      {
-        title: "Save The Date",
-        url: "https://www.instagram.com/reel/DReov7mE5PW/",
-        img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed"
-      },
-      {
-        title: "Haldi Rituals",
-        url: "https://www.instagram.com/reel/DR7Iwmuk1rw/",
-        img: "https://images.unsplash.com/photo-1583939003579-730e3918a45a"
-      },
-      {
-        title: "Wedding Portrait",
-        url: "https://www.instagram.com/p/DVig8fok_Vy/",
-        img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc"
-      },
-      {
-        title: "Traditional Soul",
-        url: "https://www.instagram.com/p/DVZ_zn8k1jp/",
-        img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf"
-      },
-      {
-        title: "Candid Joy",
-        url: "https://www.instagram.com/p/DVDajxLE8AT/",
-        img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3"
-      }
-    ].map((item, i) => (
+          {[
+            {
+              title: "Pre-Wedding Story",
+              url: "https://www.instagram.com/reel/DVOZ3HNk7WU/",
+              img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622"
+            },
+            {
+              title: "Save The Date",
+              url: "https://www.instagram.com/reel/DReov7mE5PW/",
+              img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed"
+            },
+            {
+              title: "Haldi Rituals",
+              url: "https://www.instagram.com/reel/DR7Iwmuk1rw/",
+              img: "https://images.unsplash.com/photo-1583939003579-730e3918a45a"
+            },
+            {
+              title: "Wedding Portrait",
+              url: "https://www.instagram.com/p/DVig8fok_Vy/",
+              img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc"
+            },
+            {
+              title: "Traditional Soul",
+              url: "https://www.instagram.com/p/DVZ_zn8k1jp/",
+              img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf"
+            },
+            {
+              title: "Candid Joy",
+              url: "https://www.instagram.com/p/DVDajxLE8AT/",
+              img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3"
+            }
+          ].map((item, i) => (
 
-      <div key={i}
-        onClick={() => window.open(item.url, "_blank")}
-        style={{
-          height: "260px",
-          borderRadius: "20px",
-          overflow: "hidden",
-          position: "relative",
-          cursor: "pointer"
-        }}
-      >
+            <div key={i}
+              className="fadeUp"
+              onClick={() => window.open(item.url, "_blank")}
+              style={{
+                height: "260px",
+                borderRadius: "20px",
+                overflow: "hidden",
+                position: "relative",
+                cursor: "pointer"
+              }}
+            >
 
-        <img
-          src={item.img}
-          alt=""
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            filter: "grayscale(100%)"
-          }}
-        />
+              <img
+                src={item.img}
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  filter: "grayscale(100%)"
+                }}
+              />
 
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          background: "linear-gradient(to top, rgba(0,0,0,0.9), transparent)"
-        }} />
+              <div style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(0,0,0,0.9), transparent)"
+              }} />
 
-        <div style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "20px"
-        }}>
-          <p style={{ fontSize: "12px", color: "#D4AF37" }}>2026</p>
-          <h3 style={{ fontSize: "20px" }}>{item.title}</h3>
+              <div style={{
+                position: "absolute",
+                bottom: "20px",
+                left: "20px"
+              }}>
+                <p style={{ fontSize: "12px", color: "#D4AF37" }}>2026</p>
+                <h3 style={{ fontSize: "20px" }}>{item.title}</h3>
+              </div>
+
+            </div>
+
+          ))}
+
         </div>
-
-      </div>
-
-    ))}
-
-  </div>
-</section>
+      </section>
 
       {/* CONTACT */}
-      <section id="contact" style={section}>
+      <section id="contact" style={section} className="fadeUp">
         <h2 style={title}>Contact</h2>
 
         <p style={{ marginBottom: "20px" }}>📞 8919852330</p>
@@ -168,7 +173,7 @@ useEffect(() => {
         © 2026 AB Clicks. All rights reserved.
       </footer>
 
-      {/* CSS HOVER EFFECTS */}
+      {/* HOVER EFFECTS */}
       <style>{`
         .card:hover {
           transform: translateY(-10px);
@@ -274,17 +279,6 @@ const card = {
   border: "1px solid #333",
   borderRadius: "10px"
 };
-
-//const imgCard = {
-  //overflow: "hidden",
- // borderRadius: "10px"
-//};
-
-//const imgStyle = {
- // width: "100%",
-//  height: "250px",
- // objectFit: "cover"
-//};
 
 const footer = {
   padding: "30px",
