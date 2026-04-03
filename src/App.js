@@ -49,22 +49,95 @@ function App() {
         </div>
       </section>
 
-      {/* PORTFOLIO */}
-      <section id="portfolio" style={section}>
-        <h2 style={title}>Portfolio</h2>
+{/* --- LATEST STORIES --- */}
+<section style={{ padding: "80px 20px", background: "#000" }}>
 
-        <div style={grid}>
-          {[
-            "https://images.unsplash.com/photo-1519741497674-611481863552",
-            "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
-            "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3"
-          ].map((img, i) => (
-            <div key={i} style={imgCard}>
-              <img src={img} alt="" style={imgStyle} />
-            </div>
-          ))}
+  <h2 style={{
+    fontSize: "28px",
+    letterSpacing: "2px",
+    marginBottom: "30px"
+  }}>
+    LATEST <span style={{ color: "#D4AF37", fontStyle: "italic" }}>STORIES</span>
+  </h2>
+
+  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+
+    {[
+      {
+        title: "Pre-Wedding Story",
+        url: "https://www.instagram.com/reel/DVOZ3HNk7WU/",
+        img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622"
+      },
+      {
+        title: "Save The Date",
+        url: "https://www.instagram.com/reel/DReov7mE5PW/",
+        img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed"
+      },
+      {
+        title: "Haldi Rituals",
+        url: "https://www.instagram.com/reel/DR7Iwmuk1rw/",
+        img: "https://images.unsplash.com/photo-1583939003579-730e3918a45a"
+      },
+      {
+        title: "Wedding Portrait",
+        url: "https://www.instagram.com/p/DVig8fok_Vy/",
+        img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc"
+      },
+      {
+        title: "Traditional Soul",
+        url: "https://www.instagram.com/p/DVZ_zn8k1jp/",
+        img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf"
+      },
+      {
+        title: "Candid Joy",
+        url: "https://www.instagram.com/p/DVDajxLE8AT/",
+        img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3"
+      }
+    ].map((item, i) => (
+
+      <div key={i}
+        onClick={() => window.open(item.url, "_blank")}
+        style={{
+          height: "260px",
+          borderRadius: "20px",
+          overflow: "hidden",
+          position: "relative",
+          cursor: "pointer"
+        }}
+      >
+
+        <img
+          src={item.img}
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            filter: "grayscale(100%)"
+          }}
+        />
+
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to top, rgba(0,0,0,0.9), transparent)"
+        }} />
+
+        <div style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "20px"
+        }}>
+          <p style={{ fontSize: "12px", color: "#D4AF37" }}>2026</p>
+          <h3 style={{ fontSize: "20px" }}>{item.title}</h3>
         </div>
-      </section>
+
+      </div>
+
+    ))}
+
+  </div>
+</section>
 
       {/* CONTACT */}
       <section id="contact" style={section}>
