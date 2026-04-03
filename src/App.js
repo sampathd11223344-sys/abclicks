@@ -262,16 +262,16 @@ const card = {
   borderRadius: "10px"
 };
 
-const imgCard = {
-  overflow: "hidden",
-  borderRadius: "10px"
-};
+//const imgCard = {
+  //overflow: "hidden",
+ // borderRadius: "10px"
+//};
 
-const imgStyle = {
-  width: "100%",
-  height: "250px",
-  objectFit: "cover"
-};
+//const imgStyle = {
+ // width: "100%",
+//  height: "250px",
+ // objectFit: "cover"
+//};
 
 const footer = {
   padding: "30px",
