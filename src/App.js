@@ -298,3 +298,157 @@ export default function App() {
 }
 
 ```
+      <div className="bg-[#050505] py-16 border-y border-white/5 flex flex-wrap justify-center gap-12 md:gap-32">
+        <div className="text-center">
+          <div className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-2">100+</div>
+          <div className="text-[9px] tracking-[0.4em] uppercase text-zinc-500 font-bold">Happy Clients</div>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-2">300+</div>
+          <div className="text-[9px] tracking-[0.4em] uppercase text-zinc-500 font-bold">Shoots Done</div>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-2">5/5</div>
+          <div className="text-[9px] tracking-[0.4em] uppercase text-zinc-500 font-bold">Client Rating</div>
+        </div>
+      </div>
+
+      {/* --- PORTFOLIO --- */}
+      <section id="portfolio" className="py-32 px-6 md:px-16 max-w-screen-2xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div>
+            <span className="text-[#D4AF37] text-[10px] font-bold tracking-[0.5em] uppercase mb-4 block">Selected Works</span>
+            <h2 className="text-5xl md:text-8xl font-serif tracking-tighter uppercase leading-none">Latest <br/><span className="italic text-[#D4AF37]">Stories</span></h2>
+          </div>
+          <a href={INSTAGRAM_PROFILE} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
+            Follow @{INSTAGRAM_HANDLE} <ArrowUpRight size={16} />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {PORTFOLIO_DATA.map((work) => (
+            <motion.div 
+              whileHover={{ y: -15 }} 
+              key={work.id} 
+              onClick={() => window.open(work.url, '_blank')} 
+              className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer border border-white/5 bg-zinc-900 shadow-2xl"
+            >
+              <img src={work.thumb} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" alt="thumb" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90" />
+              
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-2xl">
+                  {work.type === 'Video' ? <Play size={24} fill="currentColor" /> : <ExternalLink size={24} />}
+                </div>
+              </div>
+
+              <div className="absolute bottom-8 left-8 right-8 text-white">
+                <div className="flex items-center gap-2 mb-2">
+                   <div className="w-4 h-px bg-[#D4AF37]"></div>
+                   <span className="text-[#D4AF37] text-[9px] font-bold tracking-widest uppercase">{work.type}</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-serif leading-tight">{work.label}</h3>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- CONTACT SECTION (SIMPLIFIED) --- */}
+      <section id="contact" className="py-32 px-6 md:px-16 bg-[#050505] border-t border-white/5 text-center">
+        <div className="max-w-screen-xl mx-auto">
+          <span className="text-[#D4AF37] text-[10px] font-bold tracking-[0.5em] uppercase mb-6 block">Ready for your shoot?</span>
+          <h2 className="text-5xl md:text-8xl font-serif tracking-tighter mb-12 leading-[0.9] uppercase">Connect <br/><span className="italic opacity-30 lowercase">With Us.</span></h2>
+          
+          <div className="flex flex-col md:flex-row justify-center gap-12 mt-16">
+            <div 
+              onClick={openWhatsApp}
+              className="flex flex-col items-center gap-6 group cursor-pointer"
+            >
+              <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all">
+                <MessageCircle size={32} strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest mb-1">WhatsApp Business</p>
+                <p className="text-2xl font-light tracking-tighter">+91 89198 52330</p>
+              </div>
+            </div>
+
+            <div 
+              onClick={() => window.open(INSTAGRAM_PROFILE, '_blank')}
+              className="flex flex-col items-center gap-6 group cursor-pointer"
+            >
+              <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all">
+                <Instagram size={32} strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest mb-1">Official Instagram</p>
+                <p className="text-2xl font-light tracking-tighter">@{INSTAGRAM_HANDLE}</p>
+              </div>
+            </div>
+
+            <div 
+              onClick={() => window.open(`tel:+${WHATSAPP_NUMBER}`)}
+              className="flex flex-col items-center gap-6 group cursor-pointer"
+            >
+              <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all">
+                <Phone size={32} strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase text-zinc-500 font-bold tracking-widest mb-1">Direct Call</p>
+                <p className="text-2xl font-light tracking-tighter">Enquire Now</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <footer className="py-24 text-center bg-black border-t border-white/5">
+        <div className="flex flex-col items-center justify-center gap-4 mb-12 text-white">
+           <h3 className="text-3xl font-black tracking-[0.6em] uppercase">AB<span className="font-thin opacity-30">Clicks</span></h3>
+           <div className="h-px w-20 bg-[#D4AF37] opacity-50"></div>
+        </div>
+        <p className="text-zinc-600 text-[10px] tracking-[0.4em] uppercase mb-12 max-w-sm mx-auto leading-loose">
+           Professional Photography & Cinematic Films • Established 2024
+        </p>
+        <div className="flex justify-center gap-10 text-white">
+          <Instagram onClick={() => window.open(INSTAGRAM_PROFILE, '_blank')} className="cursor-pointer hover:text-[#D4AF37] transition-all transform hover:scale-110" />
+          <div onClick={openWhatsApp} className="cursor-pointer hover:text-[#D4AF37] transition-all transform hover:scale-110">
+            <MessageCircle />
+          </div>
+        </div>
+        <p className="mt-20 text-[8px] font-black uppercase tracking-[0.5em] text-zinc-800 italic">
+           Legacy Through Lenses • Crafted for Excellence
+        </p>
+      </footer>
+
+      {/* --- FAB --- */}
+      <motion.button 
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={openWhatsApp} 
+        className="fixed bottom-10 right-10 z-[150] w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(37,211,102,0.3)] text-white"
+      >
+        <MessageCircle size={32} />
+      </motion.button>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=Inter:wght@300;400;700;900&display=swap');
+        
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: black; -webkit-font-smoothing: antialiased; margin: 0; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+        
+        ::selection { background: #D4AF37; color: black; }
+        .backdrop-blur-xl { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+      `}} />
+    </div>
+  );
+}
+
+```
