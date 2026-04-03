@@ -201,11 +201,7 @@ function App() {
         img:hover {
           transform: scale(1.1);
         }
-      `} 
-@keyframes zoomEffect {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
-}
+      `}
 </style>
 
     </div>
