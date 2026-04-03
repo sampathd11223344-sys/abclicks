@@ -62,79 +62,75 @@ Message: ${formData.msg}`;
 
   const menuVariants = {
     closed: { opacity: 0, x: "100%" },
-    open: { opacity: 1, x: 0, transition: { duration: 0.8 } }
+    open: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
   };
 
   return (
-    <div className="bg-black text-white font-sans min-h-screen overflow-x-hidden">
-
-      {/* --- NAVIGATION --- */}
+    <div className="bg-black text-white font-sans selection:bg-[#D4AF37] selection:text-black min-h-screen overflow-x-hidden">
+      
+      {/* NAV */}
       <nav className={`fixed top-0 w-full z-[100] transition-all duration-700 px-8 md:px-16 flex justify-between items-center ${scrolled ? 'py-6 bg-black/90 backdrop-blur-md' : 'py-10 bg-transparent'}`}>
         <div className="text-2xl font-black tracking-[0.5em]">AB Clicks</div>
         <button onClick={() => setIsMenuOpen(true)}>Menu</button>
       </nav>
 
-      {/* --- MENU --- */}
+      {/* MENU */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div variants={menuVariants} initial="closed" animate="open" exit="closed" className="fixed inset-0 bg-black z-[200] flex flex-col justify-center items-center">
-            <button onClick={() => setIsMenuOpen(false)} className="absolute top-10 right-10">
+          <motion.div variants={menuVariants} initial="closed" animate="open" exit="closed" className="fixed inset-0 z-[200] bg-[#080808] flex flex-col justify-center px-8 md:px-24">
+            <button onClick={() => setIsMenuOpen(false)} className="absolute top-12 right-8">
               <X size={40} />
             </button>
-            {['Home','Portfolio','Services','Contact'].map(item => (
-              <a key={item} href={`#${item.toLowerCase()}`} onClick={()=>setIsMenuOpen(false)} className="text-5xl mb-6">
+            {['Home','Portfolio','Services','Contact'].map((item, i) => (
+              <motion.a key={item} href={`#${item.toLowerCase()}`} onClick={()=>setIsMenuOpen(false)} className="text-5xl md:text-8xl font-serif">
                 {item}
-              </a>
+              </motion.a>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* --- HERO --- */}
-      <section className="h-screen flex flex-col justify-center items-center text-center">
-        <h1 className="text-6xl font-serif mb-8">CAPTURE MEMORIES</h1>
-        <button onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}`)} className="bg-white text-black px-8 py-4 rounded-full">
-          Book Now
-        </button>
+      {/* HERO */}
+      <section className="relative h-screen flex flex-col justify-center items-center">
+        <img src={HERO_IMAGE} className="absolute inset-0 w-full h-full object-cover"/>
+        <h1 className="text-6xl md:text-[10rem] font-serif z-10">CAPTURE MEMORIES</h1>
       </section>
 
-      {/* --- PORTFOLIO --- */}
-      <section id="portfolio" className="py-32 px-8">
-        <h2 className="text-5xl mb-12">Portfolio</h2>
-        <div className="grid md:grid-cols-3 gap-10">
+      {/* PORTFOLIO */}
+      <section id="portfolio" className="py-32 px-8 md:px-16">
+        <h2 className="text-5xl">Selected Works</h2>
+        <div className="grid md:grid-cols-3 gap-10 mt-10">
           {INSTAGRAM_WORKS.map((work, idx) => (
             <div key={idx} onClick={() => window.open(work.url)} className="cursor-pointer">
-              <img src={work.thumbnail} alt="" className="w-full h-[300px] object-cover rounded-xl"/>
-              <h3 className="mt-4">{work.label}</h3>
+              <img src={work.thumbnail} className="w-full h-[300px] object-cover"/>
+              <h3>{work.label}</h3>
             </div>
           ))}
         </div>
       </section>
 
-      {/* --- SERVICES --- */}
-      <section id="services" className="py-32 px-8 bg-[#050505]">
-        <h2 className="text-5xl mb-12">Services</h2>
+      {/* SERVICES */}
+      <section id="services" className="py-32 px-8">
         {SERVICES.map(s => (
-          <div key={s.id} className="mb-6">
+          <div key={s.id}>
             <h3>{s.title}</h3>
-            <p className="text-zinc-500">{s.desc}</p>
+            <p>{s.desc}</p>
           </div>
         ))}
       </section>
 
-      {/* --- CONTACT --- */}
+      {/* CONTACT */}
       <section id="contact" className="py-32 px-8">
-        <h2 className="text-5xl mb-12">Contact</h2>
-        <form onSubmit={sendWhatsApp} className="flex flex-col gap-6 max-w-md">
+        <form onSubmit={sendWhatsApp}>
           <input placeholder="Name" required onChange={e=>setFormData({...formData,name:e.target.value})}/>
           <input placeholder="Phone" required onChange={e=>setFormData({...formData,phone:e.target.value})}/>
-          <button type="submit" className="bg-white text-black py-3">Send</button>
+          <button type="submit">Send</button>
         </form>
       </section>
 
-      {/* --- FOOTER --- */}
-      <footer className="py-16 text-center text-zinc-500">
-        © {new Date().getFullYear()} AB CLICKS STUDIO. All rights reserved.
+      {/* FOOTER */}
+      <footer className="py-20 text-center text-zinc-500">
+        © {new Date().getFullYear()} AB CLICKS STUDIO. LEGACY THROUGH LENSES.
       </footer>
 
     </div>
