@@ -34,25 +34,38 @@ function App() {
       </nav>
 
       {/* HERO */}
-      <section style={hero} className="fadeUp">
-        <div style={overlay}></div>
+<section style={hero} className="fadeUp">
 
-        <div style={heroContent}>
-          <h1 style={heroTitle}>
-            Capture <span style={{ color: "#D4AF37" }}>Moments</span><br />
-            Create <span style={{ opacity: 0.7 }}>Memories</span>
-          </h1>
+  {/* BACKGROUND IMAGE */}
+  <div style={{
+    position: "absolute",
+    inset: 0,
+    backgroundImage: "url('https://images.unsplash.com/photo-1519741497674-611481863552')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    animation: "zoomEffect 20s infinite alternate"
+  }} />
 
-          <p style={heroText}>
-            Cinematic Photography & Videography for Weddings & Events
-          </p>
+  {/* DARK OVERLAY */}
+  <div style={overlay}></div>
 
-          <a href={`https://wa.me/${WHATSAPP_NUMBER}`} style={btn}>
-            Book Now
-          </a>
-        </div>
-      </section>
+  {/* CONTENT */}
+  <div style={heroContent}>
+    <h1 style={heroTitle}>
+      Capture <span style={{ color: "#D4AF37" }}>Moments</span><br />
+      Create <span style={{ opacity: 0.7 }}>Memories</span>
+    </h1>
 
+    <p style={heroText}>
+      Cinematic Photography & Videography for Weddings & Events
+    </p>
+
+    <a href={`https://wa.me/${WHATSAPP_NUMBER}`} style={btn}>
+      Book Now
+    </a>
+  </div>
+
+</section>
       {/* SERVICES */}
       <section id="services" style={section} className="fadeUp">
         <h2 style={title}>Our Services</h2>
@@ -188,7 +201,12 @@ function App() {
         img:hover {
           transform: scale(1.1);
         }
-      `}</style>
+      `} 
+@keyframes zoomEffect {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+</style>
 
     </div>
   );
