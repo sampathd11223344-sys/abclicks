@@ -103,14 +103,7 @@ const App = () => {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
 
-    const message = `Hello AB Clicks Studio,
-    
-*New Booking Inquiry*
-Name: ${formData.name}
-WhatsApp: ${formData.phone}
-Event Type: ${formData.event}
-Event Date: ${formData.date}
-Message: ${formData.msg}`;
+    const message = `Hello AB Clicks Studio,*New Booking Inquiry*Name: ${formData.name}WhatsApp: ${formData.phone}Event Type: ${formData.event}Event Date: ${formData.date}Message: ${formData.msg}`;
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
   };
