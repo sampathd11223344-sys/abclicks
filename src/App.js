@@ -221,6 +221,7 @@ const hero = {
   alignItems: "center",
   textAlign: "center",
   position: "relative",
+  overflow: "hidden",
   backgroundImage: "url('https://images.unsplash.com/photo-1519741497674-611481863552')",
   backgroundSize: "cover",
   backgroundPosition: "center"
