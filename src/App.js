@@ -15,7 +15,20 @@ function App() {
           <a href="#contact" style={link}>Contact</a>
         </div>
       </nav>
+useEffect(() => {
+  const elements = document.querySelectorAll(".fadeUp");
 
+  elements.forEach((el, i) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(40px)";
+    el.style.transition = "all 0.8s ease";
+
+    setTimeout(() => {
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    }, i * 150);
+  });
+}, []);
       {/* HERO */}
       <section style={hero}>
         <div style={overlay}></div>
